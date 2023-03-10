@@ -33,7 +33,7 @@
 <script setup lang="ts">
 import { useCounterStore } from '@/stores/counter'
 import { reactive } from 'vue'
-import http from '@/utils/http/request-http'
+import { request } from '@/utils/http'
 const { count, doubleCount, increment } = useCounterStore()
 const formLabelAlign = reactive({
   userName: '',
@@ -45,15 +45,13 @@ const addCount = () => {
 const addTemCount = () => {}
 
 const userLogin = () => {
-  http.post(
-      'main/login.do',
-      { ...formLabelAlign, terminaltype: 'WEB', auto: 0 },
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-        }
-      }
-    )
+  const params = {
+    userName: formLabelAlign.userName,
+    passWord: formLabelAlign.passWord,
+    terminaltype: 'WEB',
+    auto: 0
+  }
+  return request.dataPost({ url: "main/login.do",data: params })
     .then((res) => {
       console.log(res)
     })

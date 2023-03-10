@@ -104,7 +104,6 @@ export default class VAxios {
     config: AxiosRequestConfig,
     hasBaseURL = true
   ): Promise<ResponseResult<T>> {
-    const { COMPANYID } = storeToRefs(store)
 
     if (hasBaseURL) {
       config.baseURL = ''
@@ -116,8 +115,6 @@ export default class VAxios {
 
     config.data = {
       ...config.data,
-      // companyId: 2,
-      companyId: COMPANYID.value,
     }
 
     return this.request({
