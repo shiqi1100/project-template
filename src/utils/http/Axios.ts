@@ -34,10 +34,10 @@ export default class VAxios {
               response.data?.rspMsg && ElMessage.info(response.data.rspMsg)
               return Promise.resolve(response.data)
             } else {
-              return Promise.reject(response.data)
+              return Promise.reject(ElMessage.error(response?.data?.rspMsg))
             }
           } else {
-            return Promise.reject('ERROR')
+            return Promise.reject(ElMessage.error(response?.data?.rspMsg))
           }
         } catch (e) {
           return Promise.reject(e)
@@ -51,8 +51,7 @@ export default class VAxios {
           message: code,
           description: message
         })
-
-        return Promise.reject(err.message)
+        return Promise.reject(err?.message)
       }
     )
   }
