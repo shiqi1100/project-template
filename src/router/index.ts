@@ -11,7 +11,6 @@ const initRouter = () => {
     NProgress.start();
     const counter = JSON.parse(localStorage.getItem("counter") as string);
     if (!counter && to.path !== "/login") next({ name: "login" });
-    console.log(1321231);
     next();
   });
 
