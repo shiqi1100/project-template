@@ -26,8 +26,7 @@ export default class VAxios {
       return config
     })
 
-    this.axiosInstance.interceptors.response.use(
-      (response: AxiosResponse<ResponseResult>) => {
+    this.axiosInstance.interceptors.response.use((response: AxiosResponse<ResponseResult | any>) => {
         try {
           if (response.status === StatusCode.SUCCESS) {
             if (response.data?.rspCode === RspCode.SUCCESS) {
@@ -48,8 +47,8 @@ export default class VAxios {
         const { message, code } = err
         // 请求失败（400~）
         ElNotification['error']({
-          message: code,
-          description: message
+          title: message,
+          message: code
         })
         return Promise.reject(err?.message)
       }
@@ -81,8 +80,9 @@ export default class VAxios {
     return this.request({
       ...config,
       method: 'POST',
-      paramsSerializer: (params: any) => {
-        return qs.stringify(params, { indices: false })
+      // 序列化处理
+      paramsSerializer: {
+        encode: (params) => qs.stringify(params, { indices: false })
       }
     })
   }

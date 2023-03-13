@@ -13,7 +13,7 @@ export const useLogin = async (state: LoginParams, router: any) => {
     auto: 0
   };
 
-  const data = (await login(params)).data;
+  const data = (await login(params))?.data || {};
   const { auth: { accessToken: token } = { accessToken: "" }, companyId, userInfo, authList } = data;
 
   Object.assign(loginState.value, {
