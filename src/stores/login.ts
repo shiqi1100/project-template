@@ -1,7 +1,7 @@
 import { ref, computed, reactive } from "vue";
 import { defineStore } from 'pinia'
 
-export const useLoginStore = defineStore('counter', () => {
+export const useLoginStore = defineStore('main', () => {
   const count = ref(1)
   const state = reactive({
     token: '',
