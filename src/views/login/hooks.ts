@@ -23,7 +23,7 @@ export const useLogin = async (state: LoginParams, router: any) => {
     authList
   });
 
-  router.replace({ name: "home" });
+  router.replace({ name: "main-page" });
   ElMessage.success("登录成功");
 
 };

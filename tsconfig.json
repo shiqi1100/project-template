@@ -5,7 +5,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "#/*": ["types/*"]
+      "#/*": ["types/*"],
+      "@vue/*": [//以@vue/开头的依赖都去packages下去查找
+        "packages/*/src"
+      ]
     }
   },
 

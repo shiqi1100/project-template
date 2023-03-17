@@ -1,20 +1,14 @@
-import { ref, computed, reactive } from "vue";
+import { reactive } from "vue";
 import { defineStore } from 'pinia'
 
 export const useLoginStore = defineStore('main', () => {
-  const count = ref(1)
   const state = reactive({
     token: '',
     companyId: null,
     authList: [],
     userInfo: {}
   })
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
-  }
-
-  return { count, doubleCount, state, increment }
+  return { state }
 },{
   persist: true,
 })

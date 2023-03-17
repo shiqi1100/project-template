@@ -4,8 +4,8 @@ import { defineAsyncComponent } from "vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
-    component: () => import('@/views/HomeView.vue')
+    name: 'main-page',
+    component: () => import('@/views/MainPage/MainPage.vue')
   },
   {
     path: '/about',

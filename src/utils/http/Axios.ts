@@ -9,6 +9,8 @@ import type {
   AxiosError
 } from 'axios'
 import type { ResponseResult } from '#/axios'
+import { useRouter } from "vue-router";
+const router = useRouter();
 
 export default class VAxios {
   private axiosInstance: AxiosInstance
@@ -33,6 +35,11 @@ export default class VAxios {
               response.data?.rspMsg && ElMessage.info(response.data.rspMsg)
               return Promise.resolve(response.data)
             } else {
+              if (response.data?.rspCode === 80001) {
+                return Promise.reject(ElMessage.error(response?.data?.rspMsg)).finally(() => {
+                  localStorage.clear()
+                }).finally(() => router.replace({ name: "login" }))
+              }
               return Promise.reject(ElMessage.error(response?.data?.rspMsg))
             }
           } else {
