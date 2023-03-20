@@ -1,12 +1,14 @@
 <template>
 <div class="container">
-
+  <slot></slot>
 </div>
 </template>
+<script lang="ts" setup>
 
+</script>
 <script>
 export default {
-  name: "Main"
+  name: 'Main'
 };
 </script>
 

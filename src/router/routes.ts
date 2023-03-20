@@ -1,11 +1,16 @@
 import type { RouteRecordRaw } from "vue-router";
-import { defineAsyncComponent } from "vue";
+import { helloWorldChildren } from "@/router/HelloWorld";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'main-page',
-    component: () => import('@/views/MainPage/MainPage.vue')
+    component: () => import('@/views/MainPage/MainPage.vue'),
+    redirect: {
+      name: 'hello-world'
+    },
+    children: [...helloWorldChildren]
+
   },
   {
     path: '/about',

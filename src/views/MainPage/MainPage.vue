@@ -9,7 +9,14 @@
           <Header></Header>
         </el-header>
         <el-main style="padding: 0">
-          <Main></Main>
+          <Main>
+            <template #default>
+              <router-view />
+              <div>
+                <HomeView/>
+              </div>
+            </template>
+          </Main>
         </el-main>
       </el-container>
     </el-container>
@@ -21,6 +28,8 @@
 import Menu from '@/components/Menu/Menu.vue'
 import Header from "@/components/Header/Header.vue";
 import Main from "@/components/Main/Main.vue";
+import HomeView from '@/views/HomeView.vue'
+
 </script>
 
 <style scoped lang="less">

@@ -14,7 +14,6 @@
         <template #default>
           <div>
             插槽内容。。。。
-            {{ props.data }}
           </div>
         </template>
       </hello-world>
@@ -24,24 +23,12 @@
 </template>
 
 <script lang="ts" setup>
-
-interface Data {
-  data: number
-}
-
 import HelloWorld from "@/components/HelloWorld.vue";
-
-
-
-const props = defineProps<Data>()
-
 
 </script>
 
 <style lang="less" scoped>
 .container {
-  width: 300px;
-  height: 500px;
   border: 1px solid gray;
   margin: auto;
 }

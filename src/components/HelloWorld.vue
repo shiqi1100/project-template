@@ -10,6 +10,7 @@
     <div>
       <modal></modal>
     </div>
+
   </div>
 </template>
 
