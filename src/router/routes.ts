@@ -13,14 +13,12 @@ const routes: Array<RouteRecordRaw> = [
     // route level code-splitting
     // this generates a separate chunk (About.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: defineAsyncComponent(
-      () => import('@/views/AboutView.vue')
-    )
+    component: () => import('@/views/AboutView.vue')
   },
   {
     path: '/login',
     name: 'login',
-    component: defineAsyncComponent(() => import('@/views/login/login.vue'))
+    component: () => import('@/views/login/login.vue')
   },
 ]
 export default routes

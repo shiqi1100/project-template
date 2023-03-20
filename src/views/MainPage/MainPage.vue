@@ -30,7 +30,6 @@ import Main from "@/components/Main/Main.vue";
   .aside {
     width: 200px;
     box-sizing: border-box;
-
   }
 
   .main {

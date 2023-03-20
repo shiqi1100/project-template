@@ -6,22 +6,27 @@
       @open="handleOpen"
       @close="handleClose"
     >
-      <el-sub-menu index="1">
-        <template #title>
-          <el-icon><location /></el-icon>
-          <span>Navigator One</span>
-        </template>
-        <el-menu-item index="1-1">item one</el-menu-item>
-      </el-sub-menu>
+    <menu-sub :data="menuList"></menu-sub>
     </el-menu>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { Document, Menu as IconMenu, Location, Setting } from '@element-plus/icons-vue'
-const isCollapse = ref(true)
 import './hooks'
+import MenuSub from './MenuSub.vue'
+import { handleMenuData } from "@/components/Menu/hooks";
+import { onMounted, ref } from "vue";
+import type { Ref } from 'vue'
+import type { PropsData } from "@/components/Menu/type";
+// 定义处理后的菜单数据
+const menuList: Ref<PropsData[] | null> = ref(null)
+
+// 获取处理后的菜单数据
+onMounted(async () => {
+  menuList.value = await handleMenuData()
+})
+
+
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }

@@ -2,15 +2,8 @@ import axios from 'axios'
 import qs from 'qs'
 import { ElMessage, ElNotification } from 'element-plus'
 import { RspCode, StatusCode } from './EnumAxios'
-import type {
-  AxiosRequestConfig,
-  AxiosInstance,
-  AxiosResponse,
-  AxiosError
-} from 'axios'
+import type { AxiosRequestConfig, AxiosInstance, AxiosResponse, AxiosError } from 'axios'
 import type { ResponseResult } from '#/axios'
-import { useRouter } from "vue-router";
-const router = useRouter();
 
 export default class VAxios {
   private axiosInstance: AxiosInstance
@@ -21,14 +14,15 @@ export default class VAxios {
   }
 
   initInterceptors() {
-    this.axiosInstance.interceptors.request.use((config:any) => {
+    this.axiosInstance.interceptors.request.use((config: any) => {
       config.headers = {
         ...config.headers
       }
       return config
     })
 
-    this.axiosInstance.interceptors.response.use((response: AxiosResponse<ResponseResult | any>) => {
+    this.axiosInstance.interceptors.response.use(
+      (response: AxiosResponse<ResponseResult | any>) => {
         try {
           if (response.status === StatusCode.SUCCESS) {
             if (response.data?.rspCode === RspCode.SUCCESS) {
@@ -37,8 +31,8 @@ export default class VAxios {
             } else {
               if (response.data?.rspCode === 80001) {
                 return Promise.reject(ElMessage.error(response?.data?.rspMsg)).finally(() => {
-                  localStorage.clear()
-                }).finally(() => router.replace({ name: "login" }))
+                  setTimeout(() => {window.location.href = '/login'}, 1000)
+                })
               }
               return Promise.reject(ElMessage.error(response?.data?.rspMsg))
             }
@@ -101,16 +95,12 @@ export default class VAxios {
     }
     return this.request({
       ...config,
-      method: 'POST',
+      method: 'POST'
     })
   }
 
   // bi请求
-  biPost<T = any>(
-    config: AxiosRequestConfig,
-    hasBaseURL = true
-  ): Promise<ResponseResult<T>> {
-
+  biPost<T = any>(config: AxiosRequestConfig, hasBaseURL = true): Promise<ResponseResult<T>> {
     if (hasBaseURL) {
       config.baseURL = ''
     }
@@ -120,7 +110,7 @@ export default class VAxios {
     }
 
     config.data = {
-      ...config.data,
+      ...config.data
     }
 
     return this.request({

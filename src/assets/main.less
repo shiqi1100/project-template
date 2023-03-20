@@ -1,0 +1,102 @@
+*{padding:0;margin:0;}
+
+div,dl,dt,dd,form,h1,h2,h3,h4,h5,h6,img,ol,ul,li,table,th,td,p,span,a{border:0;}
+
+img,input{border:none;vertical-align:middle;}
+
+body{font-family:Tahoma,Arial,Helvetica,"宋体";font-size:12px;text-align:center;background:#FFF;color:#000;}
+
+html{overflow-y:scroll;}
+
+ul,ol{list-style-type:none;}
+
+th,td,input{font-size:12px;}
+
+h3{font-size:14px;}
+
+button{border:none;cursor:pointer;font-size:12px;background-color:transparent;}
+
+select{border-width:1px;_zoom:1;border-style:solid;padding-top:2px;font-size:12px;}
+
+.clear{clear:both;font-size:1px;height:0;visibility:hidden;line-height:0;}
+
+.clearfix:after{content:"";display:block;clear:both;}
+
+.clearfix{zoom:1;}
+
+a:link,a:visited{text-decoration:none;color:#333;}
+
+a:hover,a:active{text-decoration:underline;color:#f60;}
+
+
+::-webkit-scrollbar {
+   width: 0;
+   height: 0;
+}
+
+.sq {
+   .el-sub-menu__title {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      padding: 0 0 0 23px!important;
+      margin: 0 10px 16px!important;
+      border: none!important;
+      height: 52px;
+      list-style: none;
+      cursor: pointer;
+      position: relative;
+      transition: border-color var(--el-transition-duration),background-color var(--el-transition-duration),color var(--el-transition-duration);
+      box-sizing: border-box;
+      white-space: nowrap;
+      border-radius: 8px;
+      font-family: Montserrat-Regular,System-Regular,SF Pro SC,SF Pro Text,SF Pro Icons,PingFang SC,Helvetica,Arial,sans-serif;
+   }
+   .el-sub-menu__title:hover {
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      padding: 0 0 0 23px!important;
+      margin: 0 10px 16px!important;
+      border: none!important;
+      height: 52px;
+      border-radius: 8px;
+      background-color: hsla(0,0%,100%,.15);
+   }
+   .el-menu {
+      background-color: unset;
+      font-size: 14px;
+
+      .el-menu-item {
+         display: flex;
+         align-items: center;
+         font-size: 14px;
+         color: hsla(0,0%,100%,.6);
+         height: 52px;
+         list-style: none;
+         margin: 0 10px 10px!important;
+         cursor: pointer;
+         position: relative;
+         transition: border-color var(--el-transition-duration),background-color var(--el-transition-duration),color var(--el-transition-duration);
+         box-sizing: border-box;
+         white-space: nowrap;
+         border-radius: 8px;
+         font-family: Montserrat-Regular,System-Regular,SF Pro SC,SF Pro Text,SF Pro Icons,PingFang SC,Helvetica,Arial,sans-serif;
+         &:hover {
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 0 0 0 23px!important;
+            border: none!important;
+            height: 52px;
+            border-radius: 8px;
+            background-color: hsla(0,0%,100%,.15);
+            transition: 0.5s;
+         }
+      }
+   }
+}

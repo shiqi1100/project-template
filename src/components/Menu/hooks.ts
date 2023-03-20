@@ -1,39 +1,32 @@
 import { getMenuList } from "./index";
 
 export async function handleMenuData() {
-  const menuData = await getMenuList();
-  console.log(menuData, 'line 5');
-
-  // const treeData = {
-  //   id: '',
-  //   label: '',
-  //   children: []
-  // }
-
+  let menuData: any = await getMenuList();
   const menuDataArr: string[] = [];
 
-  for (let i = 0; i <= menuData.length; i++) {
+  for (let i = 0; i < menuData.length; i++) {
     if (!menuDataArr.includes(menuData[i]?.parentAuthName)) {
       menuDataArr.push(menuData[i]?.parentAuthName);
     }
   }
 
-  const A = menuDataArr.map((item, index) => {
-    return  menuData.filter((itemMenu: Record<string, any>) => {
-      return itemMenu.parentAuthName === item
-    }).map((itemMenu: Record<string, any>, indexMenu: number) => {
-      if (itemMenu.parentAuthName === item) {
-        return {
-          label: itemMenu.authName,
-          index: index + "-" + indexMenu
-        }
+  menuData = menuDataArr.map((item: string, index:number) => {
+    const A =  menuData.filter((menuitem: Record<string, any>) => {
+      return menuitem.parentAuthName === item
+    }).map((handleMenuItem: Record<string, any>, handleMenuIndex: number) => {
+      return {
+        id: index + 1 + '-' + handleMenuIndex,
+        icon: handleMenuItem.icon,
+        label: handleMenuItem.authName,
       }
-    });
-  });
+    })
+    return {
+      id: index + 1 + '',
+      label: item,
+      children: [...A]
+    }
+  })
 
-  console.log(A);
+  return menuData
 
 }
-
-
-handleMenuData();
