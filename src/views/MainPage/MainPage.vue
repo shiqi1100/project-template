@@ -1,6 +1,6 @@
 <template>
   <div class="common-layout">
-    <el-container>
+    <el-container class="container">
       <el-aside class="aside">
         <Menu></Menu>
       </el-aside>
@@ -27,14 +27,20 @@ import Main from "@/components/Main/Main.vue";
 .common-layout {
   width: 100%;
   height: 100%;
-  .aside {
-    width: 200px;
-    box-sizing: border-box;
+
+  .container {
+    height: 100%;
+
+    .aside {
+      width: 200px;
+      box-sizing: border-box;
+    }
+
+    .main {
+      width: 100%;
+
+    }
   }
 
-  .main {
-    width: 100%;
-
-  }
 }
 </style>
