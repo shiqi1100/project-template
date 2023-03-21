@@ -10,10 +10,10 @@ import { inject, ref, watch } from "vue";
 const num = ref(1)
 
 // 依赖注入
-// const injectNum = inject('changeState') as any
+const inputNumFn = inject('inputNum') as any
 
 function getNum(val: number) {
-  // injectNum(val)
+  inputNumFn(val)
 }
 
 // 监听孙的值传给爷爷

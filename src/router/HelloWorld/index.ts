@@ -14,5 +14,13 @@ export const helloWorldChildren = [
       title: '欢迎光临'
     },
     component: () => import('@/components/TheWelcome.vue')
+  },
+  {
+    path: '/b',
+    name: 'b',
+    meta: {
+      title: '表格拖拽'
+    },
+    component: () => import('@/components/WbTest.vue')
   }
 ]

@@ -18,13 +18,16 @@
         </template>
       </hello-world>
     </div>
-
   </div>
 </template>
 
 <script lang="ts" setup>
 import HelloWorld from "@/components/HelloWorld.vue";
-
+// const props = withDefaults(defineProps<{
+//   data: string | null
+// }>(), {
+//   data: '还没收到'
+// })
 </script>
 
 <style lang="less" scoped>

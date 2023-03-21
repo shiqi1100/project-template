@@ -32,6 +32,7 @@ specifiers:
   use-axios-http: ^0.0.4
   vite: ^4.1.4
   vue: ^3.2.47
+  vue-draggable-next: ^2.1.1
   vue-router: ^4.1.6
   vue-tsc: ^1.2.0
 
@@ -42,7 +43,7 @@ dependencies:
   bdsaas-ui: 0.0.36
   dayjs: 1.11.7
   default-passive-events: 2.0.0
-  element-plus: 2.2.36_vue@3.2.47
+  element-plus: 2.3.1_vue@3.2.47
   lodash-es: 4.17.21
   nprogress: 0.2.0
   pinia: 2.0.33_7h6e7cvei2rsgyre2mq4fyhehq
@@ -50,6 +51,7 @@ dependencies:
   qs: 6.11.1
   use-axios-http: 0.0.4
   vue: 3.2.47
+  vue-draggable-next: 2.1.1_vue@3.2.47
   vue-router: 4.1.6_vue@3.2.47
 
 devDependencies:
@@ -601,14 +603,14 @@ packages:
       - supports-color
     dev: true
 
-  /@floating-ui/core/1.2.2:
-    resolution: {integrity: sha512-FaO9KVLFnxknZaGWGmNtjD2CVFuc0u4yeGEofoyXO2wgRA7fLtkngT6UB0vtWQWuhH3iMTZZ/Y89CMeyGfn8pA==}
+  /@floating-ui/core/1.2.4:
+    resolution: {integrity: sha512-SQOeVbMwb1di+mVWWJLpsUTToKfqVNioXys011beCAhyOIFtS+GQoW4EQSneuxzmQKddExDwQ+X0hLl4lJJaSQ==}
     dev: false
 
-  /@floating-ui/dom/1.2.3:
-    resolution: {integrity: sha512-lK9cZUrHSJLMVAdCvDqs6Ug8gr0wmqksYiaoj/bxj2gweRQkSuhg2/V6Jswz2KiQ0RAULbqw1oQDJIMpQ5GfGA==}
+  /@floating-ui/dom/1.2.5:
+    resolution: {integrity: sha512-+sAUfpQ3Frz+VCbPCqj+cZzvEESy3fjSeT/pDWkYCWOBXYNNKZfuVsHuv8/JO2zze8+Eb/Q7a6hZVgzS81fLbQ==}
     dependencies:
-      '@floating-ui/core': 1.2.2
+      '@floating-ui/core': 1.2.4
     dev: false
 
   /@humanwhocodes/config-array/0.10.7:
@@ -1410,14 +1412,14 @@ packages:
     resolution: {integrity: sha512-K1C03NT4I7BuzsRdCU5RWkgZxtswnKDYM6/eMhkEXqKu4e5T+ck610x3FPzu1y7HVFSiQKZqP16gnJzPpji1TQ==}
     dev: true
 
-  /element-plus/2.2.36_vue@3.2.47:
-    resolution: {integrity: sha512-9DzLqOVuw8P5Ck8Uqd9XdnDYVg2Z3iosZ1gtk2xDCWNqeoACpldP5gxa/Hbfgp4QeA3xC+f3g+UeoKKu79l28g==}
+  /element-plus/2.3.1_vue@3.2.47:
+    resolution: {integrity: sha512-IBS7ic1mRyDXpOreRkredV4ByZSuax5HPb0zNOHm4qwKC4wm927yQv+Is0JbzxPzCW5zWaV4PLy9/Gl3E3v59w==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:
       '@ctrl/tinycolor': 3.6.0
       '@element-plus/icons-vue': 2.1.0_vue@3.2.47
-      '@floating-ui/dom': 1.2.3
+      '@floating-ui/dom': 1.2.5
       '@popperjs/core': /@sxzz/popperjs-es/2.11.7
       '@types/lodash': 4.14.191
       '@types/lodash-es': 4.17.6
@@ -3099,6 +3101,15 @@ packages:
     peerDependenciesMeta:
       '@vue/composition-api':
         optional: true
+    dependencies:
+      vue: 3.2.47
+    dev: false
+
+  /vue-draggable-next/2.1.1_vue@3.2.47:
+    resolution: {integrity: sha512-f5lmA7t6LMaL4viR7dU30zzvqJzaKQs0ymL0Jy9UDT9uiZ2tXF3MzPzEvpTH2UODXZJkT+SnjeV1fXHMsgXLYA==}
+    peerDependencies:
+      sortablejs: ^1.14.0
+      vue: ^3.2.2
     dependencies:
       vue: 3.2.47
     dev: false

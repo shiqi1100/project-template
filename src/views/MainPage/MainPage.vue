@@ -12,9 +12,6 @@
           <Main>
             <template #default>
               <router-view />
-              <div>
-                <HomeView/>
-              </div>
             </template>
           </Main>
         </el-main>
@@ -28,7 +25,6 @@
 import Menu from '@/components/Menu/Menu.vue'
 import Header from "@/components/Header/Header.vue";
 import Main from "@/components/Main/Main.vue";
-import HomeView from '@/views/HomeView.vue'
 
 </script>
 

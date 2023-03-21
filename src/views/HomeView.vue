@@ -11,30 +11,26 @@
 
 <script setup lang="ts">
 import TheWelcome from "../components/TheWelcome.vue";
-import { storeToRefs } from "pinia";
-import { useLoginStore } from "@/stores/login";
-import { computed, provide, reactive } from "vue";
+import { computed, inject, provide, reactive } from "vue";
 import { inputStore } from "@/stores/input";
-
-const { state: loginState } = storeToRefs(useLoginStore());
-
+const mainData = inject('mainData', 0)
 const state = reactive({
-  num: 0,
+  num: 4,
   data: '数据'
 })
 
-function changeState(val: number) {
-  state.num = val
+function changeState() {
+  state.num = mainData
 }
 
 const changeData = computed(() => {
-  if (state.num >= 5) {
+  if (state.num >= mainData) {
     return '改变数据'
   }
   return '还没到5不能改变数据'
 })
 
 // 提供一个方法接受孙的值
-provide('changeState', changeState)
+// provide('changeState', changeState)
 
 </script>

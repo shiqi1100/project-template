@@ -34,9 +34,13 @@ const changeMenuItem = (key: { index: any; }) => {
     router.push({
       name: 'hello-world'
     })
-  } else {
+  } else if (key.index === '1-1') {
     router.push({
       name: 'a'
+    })
+  } else {
+    router.push({
+      name: 'b'
     })
   }
 

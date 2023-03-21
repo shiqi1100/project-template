@@ -15,9 +15,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { inject, ref, unref, watch } from "vue";
 import { ElMessageBox } from 'element-plus'
 import { inputStore } from '@/stores/input'
+const toTenOpen = inject('toTenOpen') as any
 const dialogVisible = ref(false)
 const input = ref('')
 const handleClose = (done: () => void) => {
@@ -34,6 +35,15 @@ const OK = () => {
   inputStore().inputVal = input.value
   input.value = ''
 }
+
+// 接受爷爷组件的值
+watch(() => toTenOpen(),(val) => {
+  if (unref(val) === 10) {
+    dialogVisible.value = true
+  } else {
+    console.log('val 不能等于 10');
+  }
+})
 </script>
 <style scoped>
 .dialog-footer button:first-child {
