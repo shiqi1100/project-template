@@ -8,7 +8,7 @@
         <template v-if="item.children">
           <el-menu-item v-for="item in item.children" :key="item.id" :index="item.id" @click="changeMenuItem">
             <b-icon
-              :name="item.icon"
+              :name="item?.icon + ''"
               :style="{ fontSize: '30px',color: '##242934' }"
             ></b-icon> &nbsp;
              {{ item.label }}</el-menu-item>

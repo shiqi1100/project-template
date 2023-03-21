@@ -6,9 +6,9 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'main-page',
     component: () => import('@/views/MainPage/MainPage.vue'),
-    redirect: {
-      name: 'hello-world'
-    },
+    // redirect: {
+    //   name: 'hello-world'
+    // },
     children: [...helloWorldChildren]
 
   },
