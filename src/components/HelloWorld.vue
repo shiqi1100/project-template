@@ -10,20 +10,6 @@
     <div>
       <modal></modal>
     </div>
-    <div style='width: 500px; margin-left: 350px'>
-      <my-form/>
-      <div class='in'>
-        <div class='inn'>
-          <span>你好</span>
-          <span>世界</span>
-        </div>
-        <div>
-          图表。。
-        </div>
-
-      </div>
-
-    </div>
     <div>
     </div>
   </div>
@@ -32,7 +18,6 @@
 <script lang="ts" setup>
 import WelcomeItem from "@/components/WelcomeItem.vue";
 import Modal from "@/components/modal.vue";
-import MyForm from '@/components/MyForm.vue'
 </script>
 
 <style lang="less" scoped>
