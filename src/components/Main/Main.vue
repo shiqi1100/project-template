@@ -9,11 +9,13 @@
   <div style='margin-top: 20px'>
     <el-button type='primary' @click='openModal'>按钮</el-button>
   </div>
+  <AsyncComponentExample />
 </div>
 </template>
 <script lang="ts" setup>
 import { provide, ref } from "vue";
 import useModalFn from '@/components/use-modal/use-modal'
+import AsyncComponentExample from "../AsyncComponentExample.vue";
 const num = ref(4)
 
 // 接受子组件传过来的值

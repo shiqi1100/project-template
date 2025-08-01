@@ -7,10 +7,17 @@ const routes: Array<RouteRecordRaw> = [
     name: 'main-page',
     component: () => import('@/views/MainPage/MainPage.vue'),
     // redirect: {
-    //   name: 'hello-world'
+    //   name: 'about'
     // },
     children: [...helloWorldChildren]
-
+  },
+  {
+    path: '/AsyncComponentTestPage',
+    name: 'AsyncComponentTestPage',
+    meta: {
+      title: '测试异步组件加载'
+    },
+    component: () => import('@/components/AsyncComponentTestPage.vue')
   },
   {
     path: '/about',

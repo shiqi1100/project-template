@@ -10,9 +10,10 @@ const initRouter = () => {
   })
   router.beforeEach((to, from, next) => {
     NProgress.start();
-    const main = JSON.parse(localStorage.getItem("main") as string);
-    if (!main && to.path !== "/login") next({ name: 'login' })
-    else next()
+    // const main = JSON.parse(localStorage.getItem("main") as string);
+    // if (!main && to.path !== "/login") next({ name: 'login' })
+    // else next()
+    next()
   });
 
   router.afterEach(() => {
