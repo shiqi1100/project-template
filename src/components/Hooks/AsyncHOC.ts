@@ -29,8 +29,8 @@ interface AsyncComponentOptions {
 export const createAsyncComponent = (options: AsyncComponentOptions) => {
   const {
     loader,
-    loadingComponent,
-    errorComponent,
+    loadingComponent = DefaultLoadingComponent,
+    errorComponent = DefaultErrorComponent,
     timeout = 8000,
     maxRetries = 2,
     delay = 200
@@ -75,15 +75,15 @@ export const createAsyncComponent = (options: AsyncComponentOptions) => {
   // 定义异步组件
   return defineAsyncComponent({
     loader: createLoaderWithRetry,
-    loadingComponent: loadingComponent || DefaultLoadingComponent,
-    errorComponent: errorComponent || DefaultErrorComponent,
+    loadingComponent,
+    errorComponent,
     delay,
     timeout
   })
 }
 
 // 默认的加载组件
-export const DefaultLoadingComponent = {
+const DefaultLoadingComponent = {
   setup() {
     return () => h('div', { class: 'async-loading' }, [
       h('div', { class: 'spinner' }),
@@ -93,7 +93,7 @@ export const DefaultLoadingComponent = {
 }
 
 // 默认的错误组件
-export const DefaultErrorComponent = {
+const DefaultErrorComponent = {
   setup() {
     return () => h('div', { class: 'async-error' }, [
       h('p', '组件加载失败'),

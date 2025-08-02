@@ -43,6 +43,7 @@
       <AsyncHOCPage 
         :test-prop="testMessage" 
         @test-event="handleTestEvent"
+        :key="componentKey"
        />
     </div>
     
@@ -59,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, h } from 'vue'
+import { ref, computed, h, shallowReactive } from 'vue'
 import type { Component } from 'vue'
 import AsyncComponent from './AsyncComponent.vue'
 // 引入异步加载组件的高阶函数
@@ -74,6 +75,8 @@ const testCase = ref('success')
 const componentKey = ref(1)
 const testMessage = ref('prop-这是测试属性值')
 const eventLogs = ref<Array<{time: string, message: string, type: string}>>([])
+
+let AsyncHOCPage = shallowReactive<Component>({})
 
 // 记录日志
 const logEvent = (message: string, type: string = 'info') => {
@@ -96,6 +99,11 @@ const handleTestEvent = (data: any) => {
 const refreshComponent = () => {
   logEvent('开始重新加载组件')
   componentKey.value += 1
+
+  // 通过高阶函数创建异步组件
+  AsyncHOCPage = createAsyncComponent({
+    loader: currentLoader.value
+  })
 }
 
 // 设置测试用例
@@ -145,7 +153,7 @@ const currentLoader = computed((): (() => Promise<{ default: Component }>) => {
 })
 
 // 通过高阶函数创建异步组件
-const AsyncHOCPage = createAsyncComponent({
+AsyncHOCPage = createAsyncComponent({
   loader: currentLoader.value
 })
 </script>
