@@ -102,7 +102,10 @@ const refreshComponent = () => {
 
   // 通过高阶函数创建异步组件
   AsyncHOCPage = createAsyncComponent({
-    loader: currentLoader.value
+    loader: currentLoader.value,
+    timeout: timeout.value,
+    maxRetries: maxRetries.value,
+    delay: delay.value
   })
 }
 
@@ -154,7 +157,10 @@ const currentLoader = computed((): (() => Promise<{ default: Component }>) => {
 
 // 通过高阶函数创建异步组件
 AsyncHOCPage = createAsyncComponent({
-  loader: currentLoader.value
+  loader: currentLoader.value,
+  timeout: timeout.value,
+  maxRetries: maxRetries.value,
+  delay: delay.value
 })
 </script>
 
