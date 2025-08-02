@@ -32,8 +32,6 @@
       <h2>测试结果:</h2>
       <AsyncHOC 
         :loader="currentLoader"
-        :loading-component="TestLoading"
-        :error-component="TestError"
         :timeout="timeout"
         :max-retries="maxRetries"
         :delay="delay"
@@ -59,11 +57,12 @@
 import { ref, computed } from 'vue'
 import type { Component } from 'vue'
 import AsyncHOC from './AsyncComponent.vue'
-import TestLoading from './TestLoading.vue'
+// import TestLoading from './TestLoading.vue'
+// import TestError from './TestError.vue'
 // 测试配置
 const timeout = ref(8000)
 const maxRetries = ref(2)
-const delay = ref(500)
+const delay = ref(200)
 const testCase = ref('success')
 const componentKey = ref(1)
 const testMessage = ref('这是测试属性值')
@@ -95,25 +94,6 @@ const setTestCase = (caseType: string) => {
   testCase.value = caseType
   logEvent(`切换到测试用例: ${caseType}`)
   refreshComponent()
-}
-
-// 测试错误组件
-const TestError: Component = {
-  template: `
-    <div class="test-error">
-      <h3>加载失败</h3>
-      <p>{{ error.message }}</p>
-      <p>重试次数: {{ retryCount }}</p>
-      <button @click="retry">重试</button>
-    </div>
-  `,
-  props: ['error', 'retry', 'retryCount'],
-  emits: [],
-  methods: {
-    retry() {
-      this.$emit('retry')
-    }
-  }
 }
 
 // 根据测试用例提供不同的加载器

@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineAsyncComponent, ref } from 'vue'
+import { defineAsyncComponent, ref, h } from 'vue'
 import type { Component } from 'vue'
 
 // 定义组件接收的属性
@@ -21,26 +21,24 @@ const props = defineProps({
   /** 加载状态展示组件 */
   loadingComponent: {
     type: Object as () => Component,
-    default: () => ({
-      template: `
-        <div class="async-loading">
-          <div class="spinner"></div>
-          <p>加载中...</p>
-        </div>
-      `
+      default: () => ({
+      setup() {
+        return () => h('div', { class: 'test-loading' }, [
+          h('p', '加载中...')
+        ])
+      }
     })
   },
   
   /** 加载失败展示组件 */
   errorComponent: {
     type: Object as () => Component,
-    default: () => ({
-      template: `
-        <div class="async-error">
-          <p>组件加载失败</p>
-          <button @click="retry">重试</button>
-        </div>
-      `
+      default: () => ({
+      setup() {
+        return () => h('div', { class: 'test-loading' }, [
+          h('p', '组件加载失败')
+        ])
+      }
     })
   },
   
