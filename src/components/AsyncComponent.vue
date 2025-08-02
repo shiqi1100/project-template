@@ -97,6 +97,10 @@ const createLoaderWithRetry = (): Promise<Component> => {
   })
 }
 
+const testEvent = (data: any) => {
+  console.log('接收到事件:', data)
+}
+
 // 定义异步组件
 const resolvedComponent = defineAsyncComponent({
   loader: createLoaderWithRetry,

@@ -29,16 +29,21 @@
     </div>
     
     <div class="test-result">
-      <h2>测试结果:</h2>
-      <AsyncHOC 
+      <h2>异步组件测试结果:</h2>
+      <AsyncComponent 
         :loader="currentLoader"
         :timeout="timeout"
         :max-retries="maxRetries"
         :delay="delay"
         :test-prop="testMessage"  
-        @custom-event="handleTestEvent"
+        @test-event="handleTestEvent"
         :key="componentKey"
       />
+      <h2 style="margin-top: 30px;">函数式异步组件测试结果:</h2>
+      <AsyncHOCPage 
+        :test-prop="testMessage" 
+        @test-event="handleTestEvent"
+       />
     </div>
     
     <div class="event-log">
@@ -54,9 +59,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, h } from 'vue'
 import type { Component } from 'vue'
-import AsyncHOC from './AsyncComponent.vue'
+import AsyncComponent from './AsyncComponent.vue'
+// 引入异步加载组件的高阶函数
+import { createAsyncComponent } from './Hooks/AsyncHOC'
 // import TestLoading from './TestLoading.vue'
 // import TestError from './TestError.vue'
 // 测试配置
@@ -65,7 +72,7 @@ const maxRetries = ref(2)
 const delay = ref(200)
 const testCase = ref('success')
 const componentKey = ref(1)
-const testMessage = ref('这是测试属性值')
+const testMessage = ref('prop-这是测试属性值')
 const eventLogs = ref<Array<{time: string, message: string, type: string}>>([])
 
 // 记录日志
@@ -81,6 +88,8 @@ const logEvent = (message: string, type: string = 'info') => {
 // 处理组件事件
 const handleTestEvent = (data: any) => {
   logEvent(`收到组件事件: ${JSON.stringify(data)}`, 'event')
+  // 可以在这里处理接收到的事件数据
+  confirm('emit事件触发：' + data.message)
 }
 
 // 刷新组件（强制重新加载）
@@ -133,6 +142,11 @@ const currentLoader = computed((): (() => Promise<{ default: Component }>) => {
     default:
       return () => import('./TargetComponent.vue')
   }
+})
+
+// 通过高阶函数创建异步组件
+const AsyncHOCPage = createAsyncComponent({
+  loader: currentLoader.value
 })
 </script>
 
