@@ -40,7 +40,7 @@
         :key="componentKey"
       />
       <h2 style="margin-top: 30px;">函数式异步组件测试结果:</h2>
-      <AsyncHOCPage 
+      <AsyncHOCComponent
         :test-prop="testMessage" 
         @test-event="handleTestEvent"
         :key="componentKey"
@@ -76,7 +76,7 @@ const componentKey = ref(1)
 const testMessage = ref('prop-这是测试属性值')
 const eventLogs = ref<Array<{time: string, message: string, type: string}>>([])
 
-let AsyncHOCPage = shallowReactive<Component>({})
+let AsyncHOCComponent = shallowReactive<Component>({})
 
 // 记录日志
 const logEvent = (message: string, type: string = 'info') => {
@@ -101,7 +101,7 @@ const refreshComponent = () => {
   componentKey.value += 1
 
   // 通过高阶函数创建异步组件
-  AsyncHOCPage = createAsyncComponent({
+  AsyncHOCComponent = createAsyncComponent({
     loader: currentLoader.value,
     timeout: timeout.value,
     maxRetries: maxRetries.value,
@@ -117,7 +117,7 @@ const setTestCase = (caseType: string) => {
 }
 
 // 根据测试用例提供不同的加载器
-const currentLoader = computed((): (() => Promise<{ default: Component }>) => {
+const currentLoader = computed((): (() => Promise<Component>) => {
   switch(testCase.value) {
     case 'success':
       // 正常加载
@@ -125,7 +125,7 @@ const currentLoader = computed((): (() => Promise<{ default: Component }>) => {
       
     case 'error':
       // 加载失败
-      return () => new Promise<{ default: Component }>((resolve, reject) => {
+      return () => new Promise<Component>((resolve, reject) => {
         logEvent('开始加载组件 (预期失败)')
         setTimeout(() => {
           reject(new Error('模拟加载失败 - 网络错误'))
@@ -134,14 +134,14 @@ const currentLoader = computed((): (() => Promise<{ default: Component }>) => {
       
     case 'timeout':
       // 超时情况（永远不完成）
-      return () => new Promise<{ default: Component }>(() => {
+      return () => new Promise<Component>(() => {
         logEvent('开始加载组件 (预期超时)')
         // 不调用resolve或reject，模拟超时
       })
 
     case 'slow':
       // 慢速加载但最终成功
-      return () => new Promise<{ default: Component }>((resolve) => {
+      return () => new Promise<Component>((resolve) => {
         logEvent('开始加载组件 (慢速加载)')
         setTimeout(() => {
           import('./TargetComponent.vue').then((module) => {
@@ -156,7 +156,7 @@ const currentLoader = computed((): (() => Promise<{ default: Component }>) => {
 })
 
 // 通过高阶函数创建异步组件
-AsyncHOCPage = createAsyncComponent({
+AsyncHOCComponent = createAsyncComponent({
   loader: currentLoader.value,
   timeout: timeout.value,
   maxRetries: maxRetries.value,

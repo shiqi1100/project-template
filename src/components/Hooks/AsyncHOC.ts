@@ -38,6 +38,7 @@ export const createAsyncComponent = (options: AsyncComponentOptions) => {
 
   // 创建带重试和超时功能的加载函数
   const createLoaderWithRetry = (): Promise<Component> => {
+    // 重试次数
     let retryCount = 0
     
     return new Promise((resolve, reject) => {
@@ -50,7 +51,6 @@ export const createAsyncComponent = (options: AsyncComponentOptions) => {
       const loadComponent = () => {
         loader()
           .then((component: Component) => {
-            console.log('组件加载成功:', component)
             clearTimeout(timeoutId)
             resolve(component)
           })
