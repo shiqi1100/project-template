@@ -39,7 +39,7 @@
         @test-event="handleTestEvent"
         :key="componentKey"
       />
-      <h2 style="margin-top: 30px;">函数式异步组件测试结果:</h2>
+      <h2 style="margin: 30px 0 ;">函数式异步组件测试结果:</h2>
       <AsyncHOCComponent
         :test-prop="testMessage" 
         @test-event="handleTestEvent"
@@ -219,7 +219,6 @@ AsyncHOCComponent = createAsyncComponent({
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 20px;
-  margin-bottom: 20px;
   min-height: 200px;
 }
 

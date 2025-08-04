@@ -9,7 +9,7 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
 // 定义接收的属性
-const props = defineProps({
+defineProps({
   testProp: {
     type: String,
     required: true

@@ -98,6 +98,7 @@ const DefaultErrorComponent = {
     return () => h('div', { class: 'async-error' }, [
       h('p', '组件加载失败'),
       h('button', {
+        style: { marginTop: '10px', padding: '5px 10px', cursor: 'pointer' },
         onClick: () => window.location.reload()
       }, '重新加载')
     ])
